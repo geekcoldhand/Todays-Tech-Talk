@@ -3,34 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fund My Project!</title>
+    <title>💻 TECH TALK</title>
+
     {{! <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css"> }}
   </head>
 
   <body>
-    <div class="flex-column justify-space-around">
-      <header class="display-flex justify-space-between align-center p-2">
-        <h1>
-          <span role="img" aria-label="money">💸</span>
-          <a href="/">Fund My Project!</a>
-        </h1>
+    <div class="container wrapper">
+      <header class="row">
+        <h1><a class="title" href="/">💻 TECH TALK 💻</a></h1>
         <nav>
-          <!-- Conditionally render login or logout links -->
-
+          <ul class="navbar">
+            <li><a class="link" href="/">Home</a></li>
+            <li><a class="link" href="/dashboard">Dashboard</a></li>
+            {{#if loggedIn}}
+              <li><a class="link" href="/" id="logout">Logout</a></li>
+            {{else}}
+              <li><a class="link" href="/login">Login</a></li>
+            {{/if}}
+          </ul>
         </nav>
       </header>
-      <main class="container container-fluid mt-5">
-        <!-- render methhod -->
+
+      <main>
         {{{body}}}
       </main>
-      <footer>
 
-      </footer>
+      {{#if loggedIn}}
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        ></script>
+        <script src="/js/logout.js"></script>
+      {{/if}}
     </div>
-
-    <!-- Render script for logged in users only -->
-
   </body>
 
 </html>
