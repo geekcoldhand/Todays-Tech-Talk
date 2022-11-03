@@ -1,10 +1,10 @@
 const path = require("path");
 // Express
 const express = require("express");
-const app = express();
 const session = require("express-session");
+const app = express();
 const exphbs = require("express-handlebars");
-const controllers = require("./controllers");
+
 const helpers = require("./utils/helpers");
 // sequelize
 const sequelize = require("./config/connection");
@@ -21,12 +21,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const sess = {
-  secret: "Super secret secret",
+  secret: "tech_talker",
   cookie: {
-    maxAge: 300000,
+    maxAge: 400000,
     httpOnly: true,
     secure: false,
-    sameSite: "strict",
   },
   resave: false,
   saveUninitialized: true,

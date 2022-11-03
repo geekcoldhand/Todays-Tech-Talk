@@ -1,49 +1,53 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
+const { Post, User, Comment } = require("../models/");
 
 // main index route requires login
 // all post by user route
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const postData = await Post.findAll({
-      include: [User],
-    });
-
-    const posts = postData.map((post) => post.get({ plain: true }));
-
-    res
-      .status(200)
-      .render("dashboard", { posts, loggedIn: req.session.loggedIn });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// get specific post by user
-router.get("/post/:id", async (req, res) => {
-  try {
-    const dashData = await Dashboard.findByPk(req.params.id, {
+      where: { user_id: req.session.user_id },
       include: [
         {
           model: User,
-          attributes: ["name"],
+          attributes: ["username"],
         },
       ],
     });
 
-    const dash = dashData.get({ plain: true });
+    const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.status(200).render("dashboard", {
-      ...dash,
-      logged_in: req.session.logged_in,
-    });
+    // render the main dashboard page
+    res
+      .status(200)
+      .render("dashboard", { posts, loggedIn: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 // create new post
+router.get("/post/new", withAuth, async (req, res) => {
+  try {
+    const dashData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
+    });
 
-// del user post
+    const dash = dashData.get({ plain: true });
+    // render the edit post page
+    res.status(200).render("post", {
+      dash,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

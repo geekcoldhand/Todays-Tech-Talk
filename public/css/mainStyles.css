@@ -1,0 +1,15 @@
+:root {
+  --pri-color: #e0e0e0;
+  --bkg-color: #717275;
+  --sec-color: #212529;
+}
+body {
+  background-image: linear-gradient(
+    to right,
+    var(--bkg-color),
+    var(--sec-color)
+  );
+}
+.logo h1 {
+  font-size: 3rem;
+}

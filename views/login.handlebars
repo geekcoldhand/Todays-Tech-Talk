@@ -1,15 +1,15 @@
 <h2>Login</h2>
 
-<section>
+<section class="">
 
   {{! Login section }}
   <form class="form login-form">
     <div class="form-group">
-      <label for="email-login">email:</label>
-      <input class="form-input" type="text" id="email-login" />
+      <h6 for="email-login">email:</h6>
+      <input class="form-input" type="text" id="username-login" />
     </div>
     <div class="form-group">
-      <label for="password-login">password:</label>
+      <h6 for="password-login">password:</h6>
       <input class="form-input" type="password" id="password-login" />
     </div>
     <div class="form-group">
@@ -17,23 +17,25 @@
     </div>
   </form>
 </section>
+
+<h2 class="text-end">Sign up</h2>
 {{! Sign up section }}
 <section>
   <form class="form signup-form">
     <div class="form-group">
-      <label for="name-signup">name:</label>
-      <input class="form-input" type="text" id="name-signup" />
+      <h6 class="text-end" for="name-signup">username:</h6>
+      <input class="form-input" type="text" id="username-signup" />
     </div>
-    <div class="form-group">
-      <label for="email-signup">email:</label>
+    {{! <div class="form-group">
+      <h6 class="text-end" for="email-signup">email:</h6>
       <input class="form-input" type="text" id="email-signup" />
-    </div>
+    </div> }}
     <div class="form-group">
-      <label for="password-signup">password:</label>
+      <h6 class="text-end" for="password-signup">password:</h6>
       <input class="form-input" type="password" id="password-signup" />
     </div>
     <div class="form-group">
-      <button class="btn btn-primary" type="submit">signup</button>
+      <button class="btn btn-primary text-end" type="submit">signup</button>
     </div>
   </form>
 </section>

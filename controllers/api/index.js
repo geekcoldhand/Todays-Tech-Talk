@@ -1,15 +1,11 @@
 const router = require("express").Router();
 const userRoutes = require("./userRoutes");
+const postRoutes = require("./postRoutes");
+const commentRoutes = require("./commentRoutes");
 
-router.use("/commentsRoutes", (res, req) => {
-  // add the comments routes
-});
-router.use("/user", userRoutes);
+router.use("/comments", commentRoutes);
+router.use("/posts", postRoutes);
+router.use("/users", userRoutes);
+router.use("/", userRoutes);
 
-router.use("/postRoutes", (res, req) => {
-  // add the post routes
-});
-router.use("/", (res, req) => {
-  res.send("No route selected");
-});
 module.exports = router;
