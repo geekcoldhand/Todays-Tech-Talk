@@ -2,32 +2,7 @@ const router = require("express").Router();
 const withAuth = require("../utils/auth");
 const { Post, User, Comment } = require("../models/");
 
-// main index route requires login
-// all post by user route
-router.get("/", async (req, res) => {
-  try {
-    const postData = await Post.findAll({
-      where: { user_id: req.session.user_id },
-      include: [
-        {
-          model: User,
-          attributes: ["username"],
-        },
-      ],
-    });
-
-    const posts = postData.map((post) => post.get({ plain: true }));
-
-    // render the main dashboard page
-    res
-      .status(200)
-      .render("dashboard", { posts, loggedIn: req.session.logged_in });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// create new post
+// get previous post
 router.get("/post/new", withAuth, async (req, res) => {
   try {
     const dashData = await Post.findByPk(req.params.id, {
@@ -50,4 +25,28 @@ router.get("/post/new", withAuth, async (req, res) => {
   }
 });
 
+// all post by user route
+router.get("/", async (req, res) => {
+  try {
+    console.log("session id:", req.session.user_id);
+    const postData = await Post.findAll({
+      where: { user_id: req.session.user_id },
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
+    });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    // render the main dashboard page
+    res
+      .status(200)
+      .render("dashboard", { posts, loggedIn: req.session.logged_in });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
