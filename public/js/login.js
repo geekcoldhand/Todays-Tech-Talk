@@ -2,14 +2,13 @@
 async function loginFormHandler(e) {
   e.preventDefault();
 
-  console.log("we have clicked login");
-
   const username = document.querySelector("#username-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
 
   if (username && password) {
     const response = await fetch("/api/users/login", {
       method: "POST",
+      redirect: "follow",
       body: JSON.stringify({
         username,
         password,
@@ -17,12 +16,12 @@ async function loginFormHandler(e) {
       headers: { "Content-Type": "application/json" },
     });
 
-    response.json;
-
-    console.log("response . . . ", response);
+    // response.redirect("http://localhost:3001/dashboard/home");
+    console.log("response . . .", response);
+    console.log("document . . .", window.location);
     if (response.ok) {
-      console.log("ok location", document.location);
-      window.location.replace("/dashboard");
+      location.replace("/dashboard/home");
+      console.log("done");
     } else {
       alert(response.statusText);
     }
@@ -51,7 +50,7 @@ async function signupFormHandler(e) {
     if (response.ok) {
       console.log("going to dash");
 
-      window.location.replace("/dashboard/");
+      window.location.href = "/dashboard/home";
     } else {
       alert(`Uh oh ... ${response.statusText}`);
     }

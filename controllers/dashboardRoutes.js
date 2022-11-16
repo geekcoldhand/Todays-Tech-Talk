@@ -2,10 +2,10 @@ const router = require("express").Router();
 const withAuth = require("../utils/auth");
 const { Post, User, Comment } = require("../models/");
 
-// get previous post
+// render new post page
 router.get("/post/new", withAuth, async (req, res) => {
   try {
-    const dashData = await Post.findByPk(req.params.id, {
+    const dashData = await Post.findByPk(req.session.user_id, {
       include: [
         {
           model: User,
@@ -26,9 +26,9 @@ router.get("/post/new", withAuth, async (req, res) => {
 });
 
 // all post by user route
-router.get("/", async (req, res) => {
+router.get("/home", withAuth, async (req, res) => {
   try {
-    console.log("session id:", req.session.user_id);
+    console.log("session id:", req.session);
     const postData = await Post.findAll({
       where: { user_id: req.session.user_id },
       include: [

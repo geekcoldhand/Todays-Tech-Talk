@@ -17,14 +17,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-// more details about post
+// update a post
 router.get("/post/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findOne({
       where: {
         id: req.params.id,
       },
-
       include: [
         {
           model: Comment,
