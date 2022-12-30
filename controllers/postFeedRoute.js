@@ -17,14 +17,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/new", (req, res) => {
-  const post = new Post.create({
-    title: req.body.title,
-    content: req.body.content,
-    userId: req.body.userId,
-  });
-});
-
 // update a post
 router.get("/post/:id", withAuth, async (req, res) => {
   try {
