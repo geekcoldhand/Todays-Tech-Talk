@@ -1,20 +1,23 @@
 <!-- Loop over each object in the post array -->
 <div class="card p-3s">
+  <h2>
+    Post
+  </h2>
 
   {{#each post as |post|}}
     <div class="row mb-4 project">
       <div class="col-md-5">
-        <h2>
+        <h3>
 
           <a href="/post/{{post.id}}">{{post.title}}</a>
-        </h2>
+        </h3>
         <p>
 
           <!-- Pass needed_funding value to the helper function -->
           <span class="">{{format_date post.date_created}}</span>
           needed!
         </p>
-        <p>Created by {{post.username}} on {{format_time post.date_created}}</p>
+        <p>Created by {{post.userId}} on {{format_time post.date_created}}</p>
       </div>
       <div class="col-md-7">
         <p>

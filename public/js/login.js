@@ -20,7 +20,7 @@ async function loginFormHandler(e) {
     console.log("response . . .", response);
     console.log("document . . .", window.location);
     if (response.ok) {
-      location.replace("/dashboard/home");
+      location.replace("/dashboard");
       console.log("done");
     } else {
       alert(response.statusText);
@@ -50,7 +50,7 @@ async function signupFormHandler(e) {
     if (response.ok) {
       console.log("going to dash");
 
-      window.location.href = "/dashboard/home";
+      window.location.href = "/dashboard";
     } else {
       alert(`Uh oh ... ${response.statusText}`);
     }

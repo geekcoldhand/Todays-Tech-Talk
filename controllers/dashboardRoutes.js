@@ -14,19 +14,21 @@ router.get("/post/new", withAuth, async (req, res) => {
       ],
     });
 
-    const dash = dashData.get({ plain: true });
+    // const dash = dashData.get({ plain: true });
+    const dashboard = dashData.map((dash) => dash.get({ plain: true }));
     // render the edit post page
     res.status(200).render("post", {
-      dash,
-      logged_in: req.session.logged_in,
+      dashboard,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json(err);
   }
 });
 
 // all post by user route
-router.get("/home", withAuth, async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     console.log("session id:", req.session);
     const postData = await Post.findAll({
@@ -44,9 +46,9 @@ router.get("/home", withAuth, async (req, res) => {
     // render the main dashboard page
     res
       .status(200)
-      .render("dashboard", { posts, loggedIn: req.session.logged_in });
+      .render("dashboard", { posts, loggedIn: req.session.loggedIn });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).error(err);
   }
 });
 module.exports = router;

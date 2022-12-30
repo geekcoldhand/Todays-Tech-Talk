@@ -1,12 +1,12 @@
 <div class="container">
   <h1 class="mb-4">New Post</h1>
 
-  <form action="/articles" method="POST" id="new-post">
+  <form action="/post" method="POST" id="new-post">
     <div class="form-group">
       <label for="title">Title</label>
       <input
         required
-        value="{{post.title}}"
+        {{!-- value={{post.title}} --}}
         type="text"
         name="title"
         id="title"
@@ -14,10 +14,11 @@
       />
     </div>
     <div class="form-group">
-      <label for="description">Description</label>
+      <label for="description">User</label>
       <textarea
-        name="description"
-        id="description"
+        name="userId"
+        {{!-- value={{post.userId}} --}}
+        id="userId"
         class="form-control"
       ></textarea>
     </div>
@@ -25,10 +26,10 @@
       <label for="markdown">Markdown</label>
       <textarea
         required
-        name="markdown"
-        id="markdown"
+        name="content"
+        id="content"
         class="form-control"
-      >{{post.content}}</textarea>
+      {{!-- >{{post.content}}</textarea> --}}
     </div>
 
     <a href="/" class="btn btn-secondary">Cancel</a>
