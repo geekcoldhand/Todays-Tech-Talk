@@ -5,8 +5,6 @@ const { Post, User, Comment } = require("../models/");
 // render new post page
 router.get("/post/new", withAuth, async (req, res) => {
   try {
-    // console.log("TESTING :::: dashData", req.session);
-
     const dashData = await await Post.findAll({
       where: { userId: req.session.userId },
       include: [
@@ -16,10 +14,6 @@ router.get("/post/new", withAuth, async (req, res) => {
         },
       ],
     });
-    console.log("TESTING :::: dashData", dashData);
-
-    // const dash = dashData.get({ plain: true });
-    // const dashboard = dashData.get({ plain: true }); //cannot read null properties
     // render the edit post page
     res.status(200).render("post", {
       dashData,
@@ -34,7 +28,6 @@ router.get("/post/new", withAuth, async (req, res) => {
 // all post by user route
 router.get("/", withAuth, async (req, res) => {
   try {
-    console.log("session id:", req.session);
     const postData = await Post.findAll({
       where: { userId: req.session.userId },
       include: [
@@ -52,6 +45,7 @@ router.get("/", withAuth, async (req, res) => {
       .status(200)
       .render("dashboard", { posts, loggedIn: req.session.loggedIn });
   } catch (err) {
+    console.error(err);
     res.status(500).error(err);
   }
 });

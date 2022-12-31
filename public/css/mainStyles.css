@@ -13,3 +13,16 @@ body {
 .logo h1 {
   font-size: 3rem;
 }
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login-card {
+  width: 45%;
+}
+
+input {
+  border-radius: 3rem;
+}

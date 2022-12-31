@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="mb-4">New Post</h1>
 
-  <form action="/post" method="POST" id="new-post">
+  <form action="/api/" method="POST" id="new-post">
     <div class="form-group">
       <label for="title">Title</label>
       <input
@@ -24,12 +24,9 @@
     </div>
     <div class="form-group">
       <label for="markdown">Markdown</label>
-      <textarea
-        required
-        name="content"
-        id="content"
-        class="form-control"
-      {{!-- >{{post.content}}</textarea> --}}
+      <textarea required name="content" id="content" class="form-control">
+
+      </textarea>
     </div>
 
     <a href="/" class="btn btn-secondary">Cancel</a>
@@ -37,4 +34,4 @@
   </form>
 </div>
 
-<script src="./js/newPost.js"></script>
+<script src="/js/newPost.js"></script>

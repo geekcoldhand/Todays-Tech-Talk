@@ -1,43 +1,43 @@
-<h2>Login</h2>
+<div class="box">
 
-<section class="">
+  <section class="login-card">
+    <h2>Login</h2>
+    {{! Login section }}
+    <form class="form login-form">
+      <div class="form-group">
+        <h6 for="email-login">email:</h6>
+        <input class="form-input" type="text" id="username-login" />
+      </div>
+      <div class="form-group">
+        <h6 for="password-login">password:</h6>
+        <input class="form-input" type="password" id="password-login" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">login</button>
+      </div>
+    </form>
+  </section>
 
-  {{! Login section }}
-  <form class="form login-form">
-    <div class="form-group">
-      <h6 for="email-login">email:</h6>
-      <input class="form-input" type="text" id="username-login" />
-    </div>
-    <div class="form-group">
-      <h6 for="password-login">password:</h6>
-      <input class="form-input" type="password" id="password-login" />
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary" type="submit">login</button>
-    </div>
-  </form>
-</section>
-
-<h2 class="text-end">Sign up</h2>
-{{! Sign up section }}
-<section>
-  <form class="form signup-form">
-    <div class="form-group">
-      <h6 class="text-end" for="name-signup">username:</h6>
-      <input class="form-input" type="text" id="username-signup" />
-    </div>
-    {{! <div class="form-group">
+  {{! Sign up section }}
+  <section class="login-card">
+    <h2 class="">Sign up</h2>
+    <form class="form signup-form">
+      <div class="form-group">
+        <h6 class="text-end" for="name-signup">username:</h6>
+        <input class="form-input" type="text" id="username-signup" />
+      </div>
+      {{! <div class="form-group">
       <h6 class="text-end" for="email-signup">email:</h6>
       <input class="form-input" type="text" id="email-signup" />
     </div> }}
-    <div class="form-group">
-      <h6 class="text-end" for="password-signup">password:</h6>
-      <input class="form-input" type="password" id="password-signup" />
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary text-end" type="submit">signup</button>
-    </div>
-  </form>
-</section>
-
+      <div class="form-group">
+        <h6 class="text-end" for="password-signup">password:</h6>
+        <input class="form-input" type="password" id="password-signup" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary text-end" type="submit">signup</button>
+      </div>
+    </form>
+  </section>
+</div>
 <script src="./js/login.js"></script>
