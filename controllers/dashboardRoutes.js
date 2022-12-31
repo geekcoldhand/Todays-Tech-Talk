@@ -10,7 +10,7 @@ router.get("/post/new", withAuth, async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ["username"],
+          attributes: ["username", "password"], //get the session n send to client
         },
       ],
     });

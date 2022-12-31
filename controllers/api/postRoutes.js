@@ -41,21 +41,15 @@ router.delete("/:id", withAuth, async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/new", async (req, res) => {
   console.log("catch");
   console.log("::: ReQ BODY", req.body);
+
+  // res.send("RED", ...req.body);
   try {
     const newPost = await Post.create({
-      title: req.body.title,
-      content: req.body.content,
+      ...req.body,
       userId: req.session.userId,
-      username: req.session.username,
-      include: [
-        {
-          model: User,
-          attributes: ["username", "password"],
-        },
-      ],
     });
 
     res.status(200).json(newPost);

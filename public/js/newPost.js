@@ -7,8 +7,9 @@ async function newFormHandler(e) {
   const userId = document.querySelector("#userId").value.trim();
 
   console.log("calling:", [title, content, userId]);
-  const response = await fetch(`/api`, {
+  const response = await fetch(`/api/posts/new`, {
     method: "POST",
+    redirect: follow,
     body: JSON.stringify({
       title,
       userId,
@@ -20,10 +21,10 @@ async function newFormHandler(e) {
   });
 
   if (response.ok) {
-    document.location.replace("/dashboard");
+    document.location.replace("/");
   } else {
-    alert(response.statusText);
+    alert("Failed to create post:::" + response.statusText);
   }
 }
 
-document.querySelector("#new-post").addEventListener("submit", newFormHandler);
+// document.querySelector("#new-post").addEventListener("submit", newFormHandler);

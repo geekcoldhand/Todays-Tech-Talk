@@ -16,9 +16,6 @@ async function loginFormHandler(e) {
       headers: { "Content-Type": "application/json" },
     });
 
-    // response.redirect("http://localhost:3001/dashboard/home");
-    console.log("response . . .", response);
-    console.log("document . . .", window.location);
     if (response.ok) {
       location.replace("/dashboard");
       console.log("done");
@@ -48,8 +45,6 @@ async function signupFormHandler(e) {
     console.log("post requested in signup");
 
     if (response.ok) {
-      console.log("going to dash");
-
       window.location.href = "/dashboard";
     } else {
       alert(`Uh oh ... ${response.statusText}`);
