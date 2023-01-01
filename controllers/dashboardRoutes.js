@@ -29,7 +29,7 @@ router.get("/post/new", withAuth, async (req, res) => {
 router.get("/", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
-      where: { userId: req.session.userId },
+      userId: req.session.userId,
       include: [
         {
           model: User,
@@ -39,7 +39,7 @@ router.get("/", withAuth, async (req, res) => {
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
-
+    console.log("post::: ", posts);
     // render the main dashboard page
     res
       .status(200)

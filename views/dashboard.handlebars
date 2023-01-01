@@ -1,20 +1,21 @@
 <div class="container">
-  <h1 class="mb-4">{{user.username}} Post</h1>
+  {{#each posts}}
+  <h1 class="mb-4">{{this.username}} Post</h1>
 
   <div class="form-group">
     <label for="title">Title</label>
 
-    {{post.title}}
+    {{this.title}}
 
   </div>
   <div class="form-group">
     <label for="description">User</label>
-    {{post.userId}}
+    {{this.userId}}
   </div>
   <div class="form-group">
     <label for="markdown">Markdown</label>
-    {{post.content}}</textarea>
+    {{this.content}}</textarea>
   </div>
-
+  {{/each}}
 </div>
 

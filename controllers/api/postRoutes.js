@@ -42,17 +42,31 @@ router.delete("/:id", withAuth, async (req, res) => {
 });
 
 router.post("/new", async (req, res) => {
-  console.log("catch");
-  console.log("::: ReQ BODY", req.body);
+  console.log("catch id:", req.session);
 
-  // res.send("RED", ...req.body);
   try {
     const newPost = await Post.create({
       ...req.body,
-      userId: req.session.userId,
     });
 
+    console.log("::: object created!:", newPost);
+
     res.status(200).json(newPost);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json(err);
+  }
+});
+
+router.get("/all", async (req, res) => {
+  console.log("catch id:", req.session);
+
+  try {
+    const allUsers = await User.findAll({});
+
+    console.log("::: object created!:", allUsers);
+
+    res.status(200).json(allUsers);
   } catch (err) {
     console.error(err);
     res.status(400).json(err);

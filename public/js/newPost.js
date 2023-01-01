@@ -6,13 +6,13 @@ async function newFormHandler(e) {
   const content = document.querySelector("#content").value.trim();
   const userId = document.querySelector("#userId").value.trim();
 
-  console.log("calling:", [title, content, userId]);
   const response = await fetch(`/api/posts/new`, {
     method: "POST",
-    redirect: follow,
+    credentials: "include",
+    redirect: "follow",
+
     body: JSON.stringify({
       title,
-      userId,
       content,
     }),
     headers: {
