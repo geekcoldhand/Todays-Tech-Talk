@@ -46,8 +46,9 @@ router.post("/new", async (req, res) => {
     const newPost = await Post.create({
       title: req.body.title,
       content: req.body.content,
+      userId: req.session.userId,
     });
-    //console.log("catch session  id:", req.session);
+    // console.log("catch session  id:", req.session);
 
     res.status(200).json(newPost);
   } catch (err) {
