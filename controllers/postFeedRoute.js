@@ -13,7 +13,11 @@ router.get("/", async (req, res) => {
 
     res
       .status(200)
-      .render("homepage", { posts, loggedIn: req.session.loggedIn });
+      .render("homepage", {
+        posts,
+        loggedIn: req.session.loggedIn,
+        userId: req.session.userId,
+      });
   } catch (err) {
     res.status(500).json(err);
   }

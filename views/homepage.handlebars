@@ -17,7 +17,11 @@
           {{!-- <span class="">{{format_date post.date_created}}</span> --}}
 
         </p>
-        <p>Created by {{this.userId}} on {{format_date this.createdAt}}</p>
+        <p>Created by
+          {{this.userId}}
+          on
+          {{format_date this.createdAt}}
+          {{format_time this.createdAt}}</p>
       </div>
       <div class="col-md-7">
         <p>

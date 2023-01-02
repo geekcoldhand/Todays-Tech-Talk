@@ -42,14 +42,12 @@ router.delete("/:id", withAuth, async (req, res) => {
 });
 
 router.post("/new", async (req, res) => {
-  console.log("catch id:", req.session);
-
   try {
     const newPost = await Post.create({
-      ...req.body,
+      title: req.body.title,
+      content: req.body.content,
     });
-
-    console.log("::: object created!:", newPost);
+    //console.log("catch session  id:", req.session);
 
     res.status(200).json(newPost);
   } catch (err) {

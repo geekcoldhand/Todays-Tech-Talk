@@ -18,6 +18,7 @@ router.get("/post/new", withAuth, async (req, res) => {
     res.status(200).render("post", {
       dashData,
       loggedIn: req.session.loggedIn,
+      userId: req.session.userId,
     });
   } catch (err) {
     console.error(err);
