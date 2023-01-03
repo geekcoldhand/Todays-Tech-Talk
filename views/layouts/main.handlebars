@@ -24,8 +24,9 @@
         <nav>
           <ul class="navbar">
             <li><a class="link" href="/">Home</a></li>
+                  {{#if loggedIn}}
             <li><a class="link" href="/dashboard/">Dashboard</a></li>
-            {{#if loggedIn}}
+            
               <li><a class="link" href="/" id="logout">Logout</a></li>
             {{else}}
               <li><a class="link" href="/login">Login</a></li>
@@ -36,9 +37,8 @@
       <hr />
 
         {{#if loggedIn}}
-      <div class="container">
-        <h1 class="mb-4">Blog Post</h1>
-        <a href="/dashboard/post/new" class="btn btn-success mb-4">New Post</a>
+      <div class="container d-flex flex-column ">
+        <a href="/dashboard/post/new" class="new-post btn mb-4">New Post</a>
         {{/if}}
         
         <main>

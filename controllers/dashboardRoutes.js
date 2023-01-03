@@ -30,7 +30,7 @@ router.get("/post/new", withAuth, async (req, res) => {
 router.get("/", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
-      userId: req.session.userId,
+      where: { userId: req.session.userId },
       include: [
         {
           model: User,
@@ -40,11 +40,13 @@ router.get("/", withAuth, async (req, res) => {
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
-    console.log("post::: ", posts);
+
+    // const { username } = posts.User.username;
     // render the main dashboard page
-    res
-      .status(200)
-      .render("dashboard", { posts, loggedIn: req.session.loggedIn });
+    res.status(200).render("dashboard", {
+      posts,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).error(err);

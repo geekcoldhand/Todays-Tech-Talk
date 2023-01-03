@@ -1,8 +1,5 @@
 <!-- Loop over each object in the post array -->
 <div class="p-3s">
-  <h2>
-    Post
-  </h2>
 
   {{#each posts}}
     <div class="row mb-4 project">
@@ -18,7 +15,7 @@
 
         </p>
         <p>Created by
-          {{this.userId}}
+          {{this.User.username}}
           on
           {{format_date this.createdAt}}
           {{format_time this.createdAt}}</p>
@@ -27,6 +24,7 @@
         <p>
           {{this.content}}
         </p>
+        <hr />
       </div>
     </div>
   {{/each}}
